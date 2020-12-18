@@ -1,0 +1,33 @@
+### List property definitions
+GET http://{{host}}/api/articles
+Content-Type: application/json
+
+### Get single property definition
+GET http://{{host}}/api/articles/7b37fb56-ef0a-4a54-90a0-a1adcbac8848
+Content-Type: application/json
+
+### Create property definition
+POST http://{{host}}/api/articles
+Content-Type: application/json
+
+{
+  "name": "Deletable Article #2",
+  "content": "Even better content yo",
+  "published": false,
+  "categoryId": "768ee95c-ee30-4814-b56b-2e2944c2373d"
+}
+
+### Update property definition
+PUT http://{{host}}/api/articles/0b13ffa3-9bf9-4c72-8179-2b1fa4fddb41
+Content-Type: application/json
+
+{
+  "name": "Article #1 edited",
+  "content": "Nice content yo",
+  "published": true,
+  "categoryId": "768ee95c-ee30-4814-b56b-2e2944c2373d"
+}
+
+### Delete property definition
+DELETE http://{{host}}/api/articles/f3b3f3f0-bdb1-4e32-8970-70eaec3f630e
+Content-Type: application/json

@@ -1,0 +1,29 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Common\Infrastructure\Http\Controller\:
+    resource: "Infrastructure/Http/Controller/*"
+    tags: ["controller.service_arguments"]
+
+  Common\Infrastructure\:
+    resource: 'Infrastructure/*'
+    exclude: 'Infrastructure/{Http}'
+
+  Common\Domain\:
+    resource: 'Domain/*'
+    exclude: 'Domain/{Entity,Enum,Model}'
+
+  Common\Application\:
+    resource: 'Application/*'
+    exclude: 'Application/{Entity,Model,ValueObject,WriteModel,ReadModel,Enum,ViewModel}'
+
+  common.orm.quote_strategy:
+    class: Common\Infrastructure\ORM\QuoteStrategy
+    public: false
+
+  common.validation_error.listener:
+    class: Common\Application\EventListener\ValidationErrorListener
+    tags:
+      - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }

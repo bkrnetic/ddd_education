@@ -1,0 +1,44 @@
+{% extends 'base-blank.html.twig' %}
+
+{% block layout %}
+    <div class="wrapper">
+
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Asset Integrity Management System</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                {% set isDashboard =  app.request.get('_route') == 'dashboard.main' %}
+                <li class="{{ isDashboard ? 'active' : '' }}">
+                    <a href="{{ url('dashboard.main') }}">Dashboard</a>
+                </li>
+                <li>
+                    <a href="{{ url('userIdentity.logout') }}">Logout</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container-fluid">
+            {% block body %}{% endblock %}
+        </div>
+
+        <!-- Modals -->
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModal"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        Are you sure?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

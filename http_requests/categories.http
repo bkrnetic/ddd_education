@@ -1,0 +1,27 @@
+### List asset definitions
+GET http://{{host}}/api/categories
+Content-Type: application/json
+
+### Get single asset definition
+GET http://{{host}}/api/categories/8080077e-29ef-48f2-a8fe-76224ffb5ed4
+Content-Type: application/json
+
+### Create asset definition
+POST http://{{host}}/api/categories
+Content-Type: application/json
+
+{
+  "name": "Deletable category"
+}
+
+### Update asset definition
+PUT http://{{host}}/api/categories/241974b3-26a2-4f79-86ed-f0e24848578c
+Content-Type: application/json
+
+{
+  "name": "Deletable category"
+}
+
+### Delete asset definition
+DELETE http://{{host}}/api/categories/a52c6bc5-0a0f-4687-b69b-baded5cd2d17
+Content-Type: application/json

@@ -1,0 +1,16 @@
+{
+  "name": "settinger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "node-sass": "^4.13.0",
+    "nodemon": "^1.19.4"
+  },
+  "scripts": {
+    "build": "node-sass --include-path scss -i static/scss -o public/ddd_education/css",
+    "watch": "nodemon -e scss -x \"yarn build\""
+  },
+  "author": "",
+  "license": "ISC"
+}

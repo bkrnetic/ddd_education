@@ -1,0 +1,15 @@
+kernel:
+  resource: ../../src/Kernel.php
+  type: annotation
+
+user_identity:
+  resource: '../../src/UserIdentity/Infrastructure/Http/Controller'
+  type: annotation
+
+dashboard:
+  resource: '../../src/Dashboard/Infrastructure/Http/Controller'
+  type: annotation
+
+common:
+  resource: '../../src/Common/Infrastructure/Http/Controller'
+  type: annotation

@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+    backend:
+        build:
+            context: ./docker/php-fpm
+            args:
+                - WITH_XDEBUG=true
+
+        volumes:
+            - ./docker/php-fpm/custom.ini:/usr/local/etc/php/conf.d/custom.ini:ro
+            - ../ddd_education:/var/app/log
+        environment:
+            - PHP_IDE_CONFIG=serverName=ddd_education_backend_1
+            - XDEBUG_CONFIG="idekey=PHPSTORM remote_enable=1 remote_host=docker.for.mac.localhost remote_port=9002"
+
+    nginx:
+        # uncomment ports section when exposing ddd_education directly to localhost
+        #    ports:
+        #      - 80:80
+        # uncomment labels and network section when using ddd_education in conjunction with traefik
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.ddd_education-nginx.rule=Host(`ddd_education.loc`)"
+            - "traefik.http.routers.ddd_education-nginx.entrypoints=web"
+        networks:
+            - web
+
+    storage:
+        environment:
+            - POSTGRES_PASSWORD=ddd_education
+            - POSTGRES_USER=ddd_education
+            - POSTGRES_DB=ddd_education
+        ports:
+            - 5432:5432 # expose postgres to host (your local machine)
+
+# uncomment networks section when using ddd_education in conjunction with traefik
+networks:
+    web:
+        external: true

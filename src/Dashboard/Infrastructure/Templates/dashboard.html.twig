@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard!{% endblock %}
+
+{% block body %}
+    Welcome to dashboard {% if app.user %}, {{ app.user.username }} {% endif %}
+
+{% endblock %}

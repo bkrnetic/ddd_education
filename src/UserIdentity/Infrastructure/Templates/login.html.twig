@@ -1,0 +1,38 @@
+{% extends 'base-blank.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <div class="row h-100 d-flex justify-content-center align-items-center">
+        <div class="col-6">
+            <div class="jumbotron">
+                <h1 class="display-4">Settinger</h1>
+                <h2 class="h3 mb-3 font-weight-normal">Please sign in</h2>
+                <hr class="my-4">
+                <form method="post">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    <div class="form-group">
+                        <label for="inputEmail">Email address</label>
+                        <input type="email" name="email" class="form-control" id="inputEmail"
+                               value="{{ last_username }}"
+                               aria-describedby="emailHelp" placeholder="Email" required autofocus>
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <input type="password" name="password" class="form-control" id="inputPassword"
+                               placeholder="Password" required>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

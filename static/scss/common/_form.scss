@@ -1,0 +1,242 @@
+form {
+  *, ::before, ::after {
+    box-sizing: content-box;
+  }
+
+  .row {
+    margin: 0;
+  }
+
+  input, select {
+    display: block;
+    border: 2px solid $secondary-dark;
+    border-radius: 8px;
+    @include font-semi-bold;
+    font-size: 16px;
+    line-height: 1.19;
+    padding: 16px;
+    width: 100%;
+    margin: 12px 0 4px;
+    box-sizing: border-box;
+    outline: none;
+
+    &:disabled {
+      background: $ternary-light;
+    }
+
+    &:focus {
+      border: 2px solid $primary-blue;
+    }
+  }
+
+  select {
+    height: 55px;
+    background: $primary-light;
+    -webkit-appearance: none;
+  }
+
+  label {
+    @include font-semi-bold;
+    font-size: 18px;
+    line-height: 1.22;
+    color: $secondary-dark;
+    display: inline;
+
+    &.checkbox-label {
+      font-size: 14px;
+      line-height: 1.28;
+      vertical-align: top;
+      position: relative;
+      cursor: pointer;
+
+      span:first-child {
+        display: inline-block;
+        margin-left: 28px;
+
+        a {
+          font-size: 14px;
+          line-height: 1.28;
+        }
+      }
+
+      input[type="checkbox"] {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0;
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+
+      .checkmark {
+        position: absolute;
+        top: 2px;
+        left: 0;
+        height: 18px;
+        width: 18px;
+        background-color: $primary-light;
+        border-radius: 4px;
+        border: 2px solid $secondary-dark;
+        cursor: pointer;
+        box-sizing: border-box;
+      }
+
+      &:hover input ~ .checkmark {
+        background-color: $secondary-light;
+      }
+
+      input:checked ~ .checkmark {
+        background-color: $secondary-dark;
+      }
+
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+
+      input:checked ~ .checkmark:after {
+        display: block;
+      }
+
+      .checkmark:after {
+        left: 4px;
+        top: 1px;
+        width: 4px;
+        height: 8px;
+        border-width: 0 2px 2px 0;
+        border: solid $primary-light;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  span.form-error {
+    @include font-medium;
+    font-size: 14px;
+    line-height: 1.2;
+    color: $primary-error;
+  }
+
+  fieldset {
+    margin-bottom: 24px;
+
+    p {
+      &.description {
+        font-size: 12px;
+        white-space: pre
+      }
+    }
+  }
+
+  .form-image {
+    label {
+      &:nth-child(3) {
+        display: inline-block;
+        width: 100%;
+        height: 240px;
+        border-radius: 8px;
+        background-position: center center;
+        background-size: cover;
+        margin-top: 16px;
+        position: relative;
+        cursor: pointer;
+        border: 1px solid $secondary-dark;
+
+        input[type="file"] {
+          opacity: 0.00;
+        }
+
+        &::after {
+          @include font-bold;
+          content: "+";
+          position: absolute;
+          border-radius: 100%;
+          width: 40px;
+          height: 40px;
+          font-size: 34px;
+          text-align: center;
+          background: $secondary-dark;
+          color: $secondary-light;
+          top: calc(50% - 40px / 2);
+          left: calc(50% - 40px / 2);
+          box-shadow: 0 0 3px $primary-light;
+          opacity: 0;
+          z-index: 3;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: $secondary-dark;
+          opacity: 0;
+          z-index: 2;
+        }
+
+        &::before, &::after {
+          transition: opacity 0.2s ease-in-out;
+        }
+
+        &:hover {
+          &::after {
+            opacity: 0.9;
+          }
+
+          &::before {
+            opacity: 0.8;
+          }
+        }
+
+      }
+    }
+  }
+
+  .form-radio {
+
+    label {
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    label ~ label {
+      font-size: 16px;
+      vertical-align: center;
+      cursor: pointer;
+
+      .radiobox {
+        content: "";
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border-radius: 100%;
+        background: $primary-light;
+        border: 2px solid $secondary-dark;
+        box-sizing: border-box;
+        vertical-align: center;
+        float: left;
+        margin-right: 8px;
+      }
+
+      input:checked ~ .radiobox {
+        background: $secondary-dark;
+      }
+
+      input {
+        display: none;
+      }
+    }
+  }
+
+  button {
+    border: none;
+  }
+}

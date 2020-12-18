@@ -1,0 +1,17 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  UserIdentity\Infrastructure\Http\Controller\:
+    resource: "Infrastructure/Http/Controller/*"
+    tags: ["controller.service_arguments"]
+
+  UserIdentity\Infrastructure\:
+    resource: "Infrastructure/*"
+    exclude: 'Infrastructure/{Http,Templates}'
+
+  UserIdentity\Application\:
+    resource: 'Application/*'
+    exclude: 'Application/{Model,ValueObject,WriteModel,ReadModel,Enum,ViewModel}'
+
