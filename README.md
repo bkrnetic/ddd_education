@@ -1,6 +1,6 @@
-# Asset Integrity Management System
+# Transition from monolithic app development to DDD
 
-## Project setup:
+## Project setup
 - setup docker override configuration
     - copy `docker-compose.override.yml.dist` to `docker-compose.override.yml`
     - it is by default running through Traefik on a domain `aims.loc`
@@ -97,7 +97,7 @@ There are several steps to adding a new domain:
     ###> lexik/jwt-authentication-bundle ###
     JWT_SECRET_KEY=%kernel.project_dir%/config/jwt/private.pem
     JWT_PUBLIC_KEY=%kernel.project_dir%/config/jwt/public.pem
-    JWT_PASSPHRASE=aims
+    JWT_PASSPHRASE=ddd_education
     ###< lexik/jwt-authentication-bundle ###
     ```
    > **NOTICE:** `JWT_PASSPHRASE` parameter should be set to password you previously entered during keys generation.
