@@ -12,7 +12,7 @@ Content-Type: application/json
 
 {
   "name": "Deletable Article #2",
-  "content": "Even better content yo",
+  "content": 4,
   "published": false,
   "categoryId": "768ee95c-ee30-4814-b56b-2e2944c2373d"
 }

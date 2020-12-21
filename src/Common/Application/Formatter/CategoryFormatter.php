@@ -8,6 +8,16 @@ use Common\Domain\Model\Category;
 
 class CategoryFormatter
 {
+    private ArticleFormatter $formatter;
+
+    /**
+     * CategoryFormatter constructor.
+     */
+    public function __construct(ArticleFormatter $formatter)
+    {
+        $this->formatter = $formatter;
+    }
+
     /**
      * @return array<string, mixed>
      */
@@ -16,6 +26,7 @@ class CategoryFormatter
         return [
             'id' => $category->getId(),
             'name' => $category->getName(),
+            'articles' => array_map([$this->formatter, 'format'], $category->getArticles())
         ];
     }
 }
